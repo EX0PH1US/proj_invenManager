@@ -1,9 +1,18 @@
 import express from "express"
 import mongoose from "mongoose"
 import "dotenv/config"
+import inventoryRouter from "./routes/inventory.js"
 import cors from "cors"
+import  morgon from "morgan"
 
 const app = express()
+
+app.use(express.urlencoded({ extended: true }))
+app.use(express.json())
+
+app.use(morgon('dev'))
+
+app.use('/', inventoryRouter)
 
 try {
     await mongoose.connect(process.env.URL)
