@@ -24,3 +24,5 @@ const productSchema = new mongoose.Schema({
         default: 5
     }
 })
+
+export default mongoose.model('Product', productSchema)
