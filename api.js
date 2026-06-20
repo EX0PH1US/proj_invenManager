@@ -3,7 +3,8 @@ import mongoose from "mongoose"
 import "dotenv/config"
 import inventoryRouter from "./routes/inventory.js"
 import cors from "cors"
-import  morgon from "morgan"
+import morgon from "morgan"
+import errorHandler from "./middleware/errorHandler.js"
 
 const app = express()
 
@@ -20,6 +21,8 @@ try {
 } catch (err) {
     console.error(err)
 }
+
+app.use(errorHandler)
 
 app.listen(3000, () => {
     console.log("http://localhost:3000")
