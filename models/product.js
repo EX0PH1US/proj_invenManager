@@ -7,7 +7,8 @@ const productSchema = new mongoose.Schema({
     },
     sku: {
         type: String,
-        required: true
+        required: true,
+        trim: true
     },
     quantity: {
         type: Number,
@@ -16,7 +17,9 @@ const productSchema = new mongoose.Schema({
     },
     category: {
         type: mongoose.Schema.Types.ObjectId,
-        required: true
+        ref: 'Category',
+        required: true,
+        index: true
     },
     lowStockThreshold: {
         type: Number,
