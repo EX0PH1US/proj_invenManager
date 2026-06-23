@@ -59,7 +59,7 @@ export const register = async (req, res) => {
 }
 
 export const refresh = async (req, res) => {
-    const { refreshToken } = req.cookie
+    const { refreshToken } = req.cookies
 
     if (!refreshToken) {
         return res.status(401).json({ error: "Missing Token", message: "Refresh Token is missing!" })
