@@ -418,6 +418,4 @@ Passwords are hashed using bcrypt before being stored in the database.
 
 # Planned Improvments 
 
-```text
 CRUD for Category, using SKU instead of ID for product CRUD
-```
