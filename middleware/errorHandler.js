@@ -5,7 +5,7 @@ export default (err, req, res, next) => {
 
     if (err.code === 11000) {
         statusCode = 400
-        message = `Duplicate Entry Error! Category is already present.`
+        message = "The request body is already present! It must be unique!"
     }
 
     else if (err.name === "ValidationError") {

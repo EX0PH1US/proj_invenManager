@@ -39,6 +39,10 @@ app.use(cookieParser())
 
 app.use(morgon('common'))
 
+app.get('/', (req, res) => {
+    res.json({ ping: "pong" })
+})
+
 app.use('/', inventoryRouter)
 app.use('/', authRouter)
 
