@@ -8,13 +8,13 @@ import errorHandler from "./middleware/errorHandler.js"
 import authRouter from "./routes/auth.js"
 import cookieParser from "cookie-parser"
 import helmet from "helmet"
-import { rateLimit } from "express-rate-limiter"
+import { rateLimit } from "express-rate-limit"
 
 const app = express()
 
 const limiter = rateLimit({
 	windowMs: 15 * 60 * 1000, 
-	limit: 100, 
+	limit: 250, 
 	standardHeaders: 'draft-8', 
 	legacyHeaders: false, 
 	ipv6Subnet: 64, 

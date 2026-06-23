@@ -4,6 +4,7 @@ import jwt from "jsonwebtoken"
 import bcrypt from "bcrypt"
 import fs from "node:fs"
 import path from "node:path"
+import "dotenv/config"
 
 const priv_key = fs.readFileSync('./secrets/priv.pem', 'utf-8')
 const pub_key = fs.readFileSync('./pub.pem')

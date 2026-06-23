@@ -1,14 +1,14 @@
 import express from "express"
 import { register, login, refresh, logout } from "../controllers/auth.js"
 import { isLoggedIn, verifyToken } from "../middleware/authenticator.js"
-import { rateLimit } from "express-rate-limiter"
+import { rateLimit } from "express-rate-limit"
 
 const router = express.Router()
 
 const authLimiter = rateLimit({
     windowMs: 60 * 60 * 1000,
     limit: 10,
-    keyGenerator: (req, res) => req.body.username || req.ip,
+    keyGenerator: (req, res) => req.body.username || req.rateLimit.ipKeyGenerator(req, res),
     handler: (req, res, next, options) => {
         res.status(429).json({ error: "Too Many Attempts", message: "Too many login/registration attempts, try again later in a few moments." })
     }
