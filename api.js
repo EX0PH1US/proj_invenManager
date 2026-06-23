@@ -49,6 +49,10 @@ try {
     console.error(err)
 }
 
+app.use ((req, res, next) => {
+    res.status(404).json({ error: "Not Found", message: `Cannot ${req.method} ${req.originalUrl} on this server.` })
+})
+
 app.use(errorHandler)
 
 app.listen(3000, () => {
