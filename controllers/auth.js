@@ -6,7 +6,7 @@ import fs from "node:fs"
 import path from "node:path"
 import "dotenv/config"
 
-const priv_key = fs.readFileSync(process.env.PRIV, 'utf-8')
+const priv_key = fs.readFileSync(`${process.env.PRIV}`, 'utf-8')
 const pub_key = fs.readFileSync('./pub.pem')
 
 export const login = async (req, res) => {
