@@ -101,6 +101,7 @@ Create a `.env` file in the project root.
 NODE_ENV=development
 URL=mongodb_connection_string
 FRONT=http://localhost:5173
+PRIV=path_to_private_pem_key
 ```
 
 ### Environment Variables
