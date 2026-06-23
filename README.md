@@ -407,13 +407,17 @@ Passwords are hashed using bcrypt before being stored in the database.
 ### Global Rate Limit
 
 ```text
-100 requests per 15 minutes per IP address
+250 requests per 15 minutes per IP address
 ```
 
 ### Authentication Rate Limit
 
 ```text
-15 login attempts per 15 minutes per IP address
+10 login or registration attempts per 60 minutes per IP address and username
 ```
 
-This helps mitigate brute-force attacks and excessive API usage.
+# Planned Improvments 
+
+```text
+CRUD for Category, using SKU instead of ID for product CRUD
+```
