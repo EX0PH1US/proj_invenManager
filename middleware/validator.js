@@ -1,8 +1,8 @@
 import Joi from "joi"
 
 const productSchema = Joi.object({
-    name: Joi.string().min(3).max(50).alphanum().required(),
-    sku: Joi.string().alphanum().required(),
+    name: Joi.string().min(3).max(50).required(),
+    sku: Joi.string().required(),
     quantity: Joi.number().min(0).required(),
     lowStockThreshold: Joi.number().min(0),
     category: Joi.string().min(1).max(30),
@@ -18,7 +18,7 @@ export const validateProduct = (req, res, next) => {
     if (error) {
         const err_message = error.details.map((err) => err.message).join(',')
         const err = new Error(err_message)
-        err.name = 'ValidationError'
+        err.name = 'SchemaValidationError'
         throw err
     } else {
         next()
