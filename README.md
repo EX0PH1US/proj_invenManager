@@ -169,7 +169,7 @@ Supports pagination and category filtering.
 Example:
 
 ```http
-GET /products?category=electronics
+GET /products?category=electronics&page=2&limit=3
 ```
 
 > Category filtering uses the category slug, not the category name.
