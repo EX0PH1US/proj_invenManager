@@ -117,7 +117,7 @@ export const getLowStockProducts = async (req, res) => {
     }
 
     const products = await Product.find(query).populate('category').sort({ createdAt: -1 }).skip(skipIdx).limit(size)
-    const totalDocuments = await Product.countDocuments()
+    const totalDocuments = await Product.countDocuments(query)
     const totalCount = Math.ceil(totalDocuments / size)
     res.json({ data: products, 
         meta: {
