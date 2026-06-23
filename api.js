@@ -8,8 +8,20 @@ import errorHandler from "./middleware/errorHandler.js"
 import authRouter from "./routes/auth.js"
 import cookieParser from "cookie-parser"
 import helmet from "helmet"
+import { rateLimit } from "express-rate-limiter"
 
 const app = express()
+
+const limiter = rateLimit({
+	windowMs: 15 * 60 * 1000, 
+	limit: 100, 
+	standardHeaders: 'draft-8', 
+	legacyHeaders: false, 
+	ipv6Subnet: 64, 
+    handler: (req, res, next, options) => {
+        res.status(429).json({ error: "Too Many Requests", message: "Too many requests were sent to the server, try again in a few moments." })
+    }
+})
 
 app.use(cors({
     origin: process.env.FRONT || 'http://localhost:3000',
@@ -18,6 +30,7 @@ app.use(cors({
     credentials: true
 }))
 
+app.use(limiter)
 app.use(helmet())
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
